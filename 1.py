@@ -66,6 +66,15 @@ def merge(root1, root2):
             root1.right = root2
     return root1
 
+def non_recursive_insert(root, value):
+    root1 = root
+    while root.left != None or root.right != None:
+        if value < root.val:
+            root = root.left
+        else:
+            root = root.right
+    root = TreeItem(value)
+    return root1
 
 def is_bst(root, min, maks):
     if root == None:
