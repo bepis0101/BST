@@ -66,20 +66,30 @@ def merge(root1, root2):
             root1.right = root2
     return root1
 
+
+def is_bst(root, min, maks):
+    if root == None:
+        return 1
+    if root.val >= maks:
+        return 0
+    if root.val <= min:
+        return 0
+    return is_bst(root.right, root.val, maks) and is_bst(root.left, min, root.val)
+
 T1 = TreeItem(1)
-T2 = TreeItem(4)
+T2 = TreeItem(11)
 T1 = insert(T1, 2)
 T1 = insert(T1, 3)
 T1 = insert(T1, 4)
 T1 = insert(T1, 5)
 T1 = insert(T1, 6)
 T1 = insert(T1, 7)
-T2 = insert(T2, 2)
-T2 = insert(T2, 6)
-T2 = insert(T2, 1)
-T2 = insert(T2, 3)
-T2 = insert(T2, 5)
-T2 = insert(T2, 7)
+T2 = insert(T2, 9)
+T2 = insert(T2, 13)
+T2 = insert(T2, 8)
+T2 = insert(T2, 10)
+T2 = insert(T2, 12)
+T2 = insert(T2, 14)
 
 print(T1.val)
 print(height(T2))
@@ -88,4 +98,9 @@ print_positive(T1)
 print()
 print_positive(T2)
 T3 = merge(T1, T2)
+print()
 print_positive(T3)
+min = float('-inf')
+maks = float('inf')
+print()
+print(is_bst(T3, min, maks))
